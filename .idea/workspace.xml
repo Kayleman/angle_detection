@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c2b9570-f93c-458b-9fe7-ad90d6a67c4a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angle_detection3.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog_img.py" afterPath="$PROJECT_DIR$/watchdog_img.py" />
     </list>
     <ignored path="angle_detection.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -408,6 +405,14 @@
       <option name="presentableId" value="Default" />
       <updated>1511146466030</updated>
     </task>
+    <task id="LOCAL-00001" summary="add watchdog">
+      <created>1515055725757</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1515055725757</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -443,6 +448,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add watchdog" />
+    <option name="LAST_COMMIT_MESSAGE" value="add watchdog" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
