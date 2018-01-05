@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread("images/test_10.bmp")
+img = cv2.imread("images/test_5.bmp")
 # img = cv2.imread("images/2.png")
 # img = cv2.imread("images/23.bmp")
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

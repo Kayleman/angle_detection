@@ -3,6 +3,7 @@ import time
 import logging
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import angle_detection3
 
 
 class CreatedEventHandler(FileSystemEventHandler):
@@ -12,6 +13,7 @@ class CreatedEventHandler(FileSystemEventHandler):
     def on_created(self, event):
         file_name = event.src_path
         print(file_name)
+        angle_detection3.detect_img(file_name)
 
 
 if __name__ == "__main__":
