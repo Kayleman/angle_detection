@@ -2,9 +2,9 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-import time
-from watchdog.observers import Observer
-from watchdog_img import CreatedEventHandler
+# import time
+# from watchdog.observers import Observer
+# from watchdog_img import CreatedEventHandler
 
 
 # 坐标原点偏移
@@ -32,18 +32,18 @@ end_y = 984
 # offset_x = 420 # short_case
 # offset_y = 268
 
-
-def watch_path(path):
-    event_handler = CreatedEventHandler()
-    observer = Observer()
-    observer.schedule(event_handler, path, recursive=True)
-    observer.start()
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-    observer.join()
+#
+# def watch_path(path):
+#     event_handler = CreatedEventHandler()
+#     observer = Observer()
+#     observer.schedule(event_handler, path, recursive=True)
+#     observer.start()
+#     try:
+#         while True:
+#             time.sleep(1)
+#     except KeyboardInterrupt:
+#         observer.stop()
+#     observer.join()
 
 
 def hough_change(canny_img, img):
@@ -235,7 +235,7 @@ def detect_img(img_path):
 
     # line_left, theta1 = hough_change(canny_left)
     # line_right, theta2 = hough_change(canny_right);
-    roi_line, img_line = hough_change(roi_canny)
+    roi_line, img_line = hough_change(roi_canny, img)
     # print("This angle is :", )
     # angle = 180 - (theta1 - theta2) * 180
     # print(angle)
@@ -250,6 +250,7 @@ def detect_img(img_path):
     # plt.subplot(324), plt.imshow(roi_right, 'gray'), plt.title('Original')
     # plt.subplot(325), plt.imshow(line_left), plt.title('Line_left')
     # plt.subplot(326), plt.imshow(line_right), plt.title('Line_right')
+
     plt.subplot(221), plt.imshow(img), plt.title('Original Image')
     plt.xticks(())  # ignore xticks
     plt.yticks(())  # ignore yticks
@@ -267,7 +268,12 @@ def detect_img(img_path):
     plt.yticks(())  # ignore yticks
 
     plt.show()
-    # cv2.imshow('line', line)
-    # cv2.imwrite("line.png", line)
-    cv2.waitKey(1)
-    cv2.destroyAllWindows()
+    # cv2.namedWindow('img_line', 0)
+    # cv2.resizeWindow('img_line', 640, 480)
+    # cv2.imshow('img_line', img_line)
+    # # cv2.imwrite("line.png", line)
+    # cv2.waitKey(1000)
+    # cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    detect_img("images/test_10.bmp")
