@@ -56,7 +56,7 @@ if __name__ == "__main__":
         observer.start()
         while True:
             if event_handler.signal is True:
-                ad3 = angle_detection3.Ad3()
+                ad3 = angle_detection3.AngleDetectionHoughLine()
                 ad3.detect_img(event_handler.file_name)
                 event_handler.signal = False
 
