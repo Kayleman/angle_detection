@@ -5,42 +5,20 @@ import matplotlib.pyplot as plt
 # import time
 # from watchdog.observers import Observer
 # from watchdog_img import CreatedEventHandler
-class AngleDetectionHoughLine:
+class Ad3:
     # 坐标原点偏移
     def __init__(self):
-        # self.start_x = 974
-        # self.end_x = 1910
-        #
-        # self.start_y = 727
-        # self.end_y = 1215
-
-        # self.start_x = 890
-        # self.end_x = 1910
-        #
-        # self.start_y = 700
-        # self.end_y = 1215
-        self.start_x = 890
-        self.end_x = 1689
-
-        self.start_y = 732
-        self.end_y = 1290
-        # self.start_x = 890
-        # self.end_x = 1689
-        #
-        # self.start_y = 732
-        # self.end_y = 1090
-
         # self.start_x = 762
         # self.end_x = 1718
         #
         # self.start_y = 597
         # self.end_y = 984
 
-        # self.start_x = 890
-        # self.end_x = 1689
-        #
-        # self.start_y = 732
-        # self.end_y = 1090
+        self.start_x = 890
+        self.end_x = 1689
+
+        self.start_y = 732
+        self.end_y = 1090
 
     # offset_x = 762  # test_1-18
     # offset_y = 597
@@ -108,10 +86,7 @@ class AngleDetectionHoughLine:
         # angle_right_2 = []
 
         for rho, theta in lines2d[:]:
-            # self.draw_line(roi_copy, img_copy, rho, theta)
-            # plt.subplot(121), plt.imshow(roi_copy), plt.title('roi copy')
-            # plt.subplot(122), plt.imshow(img_copy), plt.title('Image copy')
-            # plt.show()
+
             # print("-------------")
             # print(rho)
             # print(theta)
@@ -181,6 +156,8 @@ class AngleDetectionHoughLine:
         if flag_left_up and flag_right_up:
             angle_res_1 = 180 - (angle_left_up_mean - angle_right_up_mean)
             angle_min.append(angle_res_1)
+            if angle_res_1 < 89 or angle_res_1 > 91:
+                pass
             print("The angle 1 is:", angle_res_1)
 
         if flag_left_up and flag_right_down:
@@ -198,13 +175,10 @@ class AngleDetectionHoughLine:
             angle_min.append(angle_res_4)
             print("The angle 4 is:", angle_res_4)
 
-        if len(angle_min) == 0:
-            print("can not detect the angle")
-        else:
-            angle_min = np.min(np.array(angle_min))
-            # print("The min angle is:", angle_min)
-            # print("--------------------")
-        return roi_copy, img_copy
+        angle_min = np.min(np.array(angle_min))
+        # print("The min angle is:", angle_min)
+        # print("--------------------")
+        return roi_copy, img_copy, angle_min
         # print("%.2f" % angle_min)
         # f = open('/test.txt', 'w')
         # f.write("The min angle is:", angle_min)
@@ -266,7 +240,7 @@ class AngleDetectionHoughLine:
 
         # line_left, theta1 = hough_change(canny_left)
         # line_right, theta2 = hough_change(canny_right);
-        roi_line, img_line = self.hough_change(roi_canny, img)
+        roi_line, img_line, final_angle = self.hough_change(roi_canny, img)
         # print("This angle is :", )
         # angle = 180 - (theta1 - theta2) * 180
         # print(angle)
@@ -309,7 +283,8 @@ class AngleDetectionHoughLine:
         # # cv2.imwrite("line.png", line)
         # cv2.waitKey(1000)
         # cv2.destroyAllWindows()
+        return final_angle
 
 if __name__ == "__main__":
-    ad3 = AngleDetectionHoughLine()
-    ad3.detect_img("images2018-5-4/test0.jpg")
+    ad3 = Ad3()
+    final_angle = ad3.detect_img("images2018-5-4/test0.jpg")
